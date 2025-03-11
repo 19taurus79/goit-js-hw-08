@@ -1,3 +1,4 @@
+// import * as basicLightbox from 'basiclightbox';
 const images = [
   {
     preview:
@@ -90,5 +91,11 @@ gallery.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
   event.preventDefault();
-  console.log(event.target.dataset.source);
+  if (event.target !== event.currentTarget) {
+    const instance = basicLightbox.create(`
+      <img src="${event.target.dataset.source}" width="800" height="600">
+  `);
+
+    instance.show();
+  }
 }
