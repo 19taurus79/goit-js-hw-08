@@ -85,3 +85,10 @@ const markup = images
 
 gallery.insertAdjacentHTML('beforeend', markup);
 console.log(markup);
+
+gallery.addEventListener('click', onGalleryClick);
+
+function onGalleryClick(event) {
+  event.preventDefault();
+  console.log(event.target.dataset.source);
+}
