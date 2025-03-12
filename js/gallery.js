@@ -71,7 +71,7 @@ const markup = images
   .map(image => {
     const { preview, original, description } = image;
     return `<li class="gallery-item">
-  <a class="gallery-link" href="large-image.jpg">
+  <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
       src="${preview}"
@@ -91,7 +91,7 @@ gallery.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
   event.preventDefault();
-  if (event.target !== event.currentTarget) {
+  if (event.target.nodeName === 'IMG') {
     const instance = basicLightbox.create(`
       <img src="${event.target.dataset.source}" width="800" height="600">
   `);
